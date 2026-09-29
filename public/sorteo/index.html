@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sorteador de grupos</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Sorteador de grupos</h1>
+    <a class="link" href="/admin/">Panel de administración &rarr;</a>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <div class="form-row">
+        <div>
+          <label for="select-grado">Grado</label>
+          <select id="select-grado"></select>
+        </div>
+        <div>
+          <label for="tamano-grupo">Alumnos por grupo</label>
+          <input type="number" id="tamano-grupo" min="1" value="3" />
+        </div>
+        <button id="btn-sortear">Sortear grupos</button>
+      </div>
+      <p class="muted" id="info-grado"></p>
+      <div id="error-sorteo" class="error" style="display:none;"></div>
+    </div>
+
+    <div id="resultado-wrap" style="display:none;">
+      <div class="card">
+        <div style="display:flex; justify-content: space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
+          <h2 style="margin:0;">Resultado: <span id="resumen-resultado"></span></h2>
+          <button id="btn-resortear" class="secondary">Volver a sortear</button>
+        </div>
+      </div>
+      <div class="grid cols-3" id="grupos-container"></div>
+    </div>
+  </div>
+
+  <script src="sorteo.js"></script>
+</body>
+</html>

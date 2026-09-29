@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Armador de grupos</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Panel de administración</h1>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a class="link" href="/sorteo/" target="_blank">Abrir sorteador &rarr;</a>
+      <button class="secondary" id="btn-logout">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="grid cols-2">
+      <div class="card">
+        <h2>Grados</h2>
+        <form id="form-grado" class="form-row">
+          <div>
+            <label for="nombre-grado">Nuevo grado</label>
+            <input type="text" id="nombre-grado" placeholder="Ej. 3ro A" required />
+          </div>
+          <button type="submit">Agregar</button>
+        </form>
+        <div id="error-grado" class="error" style="display:none;"></div>
+        <ul class="list" id="lista-grados"></ul>
+      </div>
+
+      <div class="card" id="panel-alumnos" style="display:none;">
+        <h2>Alumnos <span class="muted" id="titulo-grado-alumnos"></span></h2>
+        <form id="form-alumno" class="form-row">
+          <div>
+            <label for="nombre-alumno">Nuevo alumno</label>
+            <input type="text" id="nombre-alumno" placeholder="Nombre del alumno" required />
+          </div>
+          <button type="submit">Agregar</button>
+        </form>
+        <div id="error-alumno" class="error" style="display:none;"></div>
+        <ul class="list" id="lista-alumnos"></ul>
+      </div>
+    </div>
+
+    <div class="card" id="panel-restricciones" style="display:none;">
+      <h2>Restricciones — alumnos que no deben quedar en el mismo grupo</h2>
+      <p class="muted">Selecciona 2 o más alumnos que no deben cruzarse entre sí y crea la restricción. Puedes crear varias restricciones distintas.</p>
+      <div class="checkbox-list" id="checkbox-alumnos"></div>
+      <div id="error-restriccion" class="error" style="display:none;"></div>
+      <button id="btn-crear-restriccion">Crear restricción con seleccionados</button>
+
+      <h3 style="margin-top: 22px; font-size: 14px;">Restricciones activas</h3>
+      <div id="lista-restricciones"></div>
+      <p class="muted" id="sin-restricciones">No hay restricciones configuradas para este grado.</p>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
