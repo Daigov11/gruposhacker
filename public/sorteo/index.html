@@ -7,33 +7,74 @@
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
-  <header class="topbar">
-    <h1>Sorteador de grupos</h1>
-    <a class="link" href="/admin/">Panel de administración &rarr;</a>
+  <header class="hero-header">
+    <div class="brand">
+      <span class="brand-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      <div>
+        <h1>Sorteador de <span class="text-gradient">grupos</span></h1>
+        <p class="brand-subtitle">Forma equipos de manera rápida y sencilla</p>
+      </div>
+    </div>
+    <a class="btn-pill" href="/admin/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Panel de administración &rarr;
+    </a>
   </header>
 
   <div class="container">
-    <div class="card">
-      <div class="form-row">
-        <div>
-          <label for="select-grado">Grado</label>
+    <div class="card config-card">
+      <div class="config-grid">
+        <div class="field">
+          <label for="select-grado">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
+            Selecciona el grado
+          </label>
           <select id="select-grado"></select>
         </div>
-        <div>
-          <label for="tamano-grupo">Alumnos por grupo</label>
-          <input type="number" id="tamano-grupo" min="1" value="3" />
+        <div class="field field-stepper">
+          <label for="tamano-grupo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Alumnos por grupo
+          </label>
+          <div class="stepper">
+            <button type="button" id="btn-decrement" class="stepper-btn" aria-label="Disminuir">&minus;</button>
+            <input type="number" id="tamano-grupo" min="1" value="3" />
+            <button type="button" id="btn-increment" class="stepper-btn" aria-label="Aumentar">+</button>
+          </div>
         </div>
-        <button id="btn-sortear">Sortear grupos</button>
+        <button id="btn-sortear" class="btn-gradient">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 4 3 3-3 3"/><path d="M2 7h13a5 5 0 0 1 5 5v0"/><path d="m18 20 3-3-3-3"/><path d="M2 17h13a5 5 0 0 0 5-5v0"/></svg>
+          Sortear grupos
+        </button>
       </div>
       <p class="muted" id="info-grado"></p>
       <div id="error-sorteo" class="error" style="display:none;"></div>
     </div>
 
     <div id="resultado-wrap" style="display:none;">
-      <div class="card">
-        <div style="display:flex; justify-content: space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
-          <h2 style="margin:0;">Resultado: <span id="resumen-resultado"></span></h2>
-          <button id="btn-resortear" class="secondary">Volver a sortear</button>
+      <div class="card results-header">
+        <div class="results-title">
+          <span class="emoji">🎉</span>
+          <div>
+            <h2>¡Grupos listos!</h2>
+            <p class="muted" id="resumen-resultado"></p>
+          </div>
+        </div>
+        <div class="results-actions">
+          <button id="btn-resortear" class="secondary btn-with-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+            Volver a sortear
+          </button>
+          <button id="btn-copiar" class="secondary btn-with-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+          <button id="btn-imprimir" class="secondary btn-with-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Imprimir
+          </button>
         </div>
       </div>
       <div class="grid cols-3" id="grupos-container"></div>
